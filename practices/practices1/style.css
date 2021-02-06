@@ -1,0 +1,22 @@
+/* body {
+  width: 100%;
+} */
+
+.header1 {
+  background-color: darkslategray;
+}
+.header1 a {
+  color: white;
+}
+
+.header2 {
+  background-color: darkblue;
+  padding: 20px 0;
+}
+.first {
+  margin-top: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
