@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, 
+    shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style></style>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Temple of Hephaistos</title>
+  </head>
+  <body>
+    <div class="header1">
+      <div class="container">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-box-arrow-in-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+                />
+              </svg>
+              <span>Logout</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-person-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                />
+              </svg>
+              <span>Profile</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-star-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                />
+              </svg>
+              <span class="margin_left_button">Favorite</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="header2">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="#">Share Your Travels</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contract</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Browse
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                class="btn btn-outline-success my-2 my-sm-0"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row first">
+        <div class="col-md-2">
+          <div class="card blue-border">
+            <div class="card-header places-list">Continent</div>
+            <ul class="list-group list-group-flush place">
+              <li class="list-group-item"><a href="#">Africa</a></li>
+              <li class="list-group-item"><a href="#">Asia</a></li>
+              <li class="list-group-item"><a href="#">Europe</a></li>
+              <li class="list-group-item"><a href="#">North America</a></li>
+              <li class="list-group-item"><a href="#">Oceania</a></li>
+              <li class="list-group-item"><a href="#">South America</a></li>
+            </ul>
+          </div>
+
+          <div class="card blue-border">
+            <div class="card-header places-list">Popular Countries</div>
+            <ul class="list-group list-group-flush place">
+              <li class="list-group-item"><a href="#">Canada</a></li>
+              <li class="list-group-item"><a href="#">Germany</a></li>
+              <li class="list-group-item"><a href="#">Ghana</a></li>
+              <li class="list-group-item"><a href="#">United Kingdom</a></li>
+              <li class="list-group-item"><a href="#">United States</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-8">
+              <img
+                class="img-fluid"
+                src="img/temple.jpg"
+                alt="Temple of Hephaistos"
+              />
+              <p>
+                Located on the western perimeter of Agora in Athens. Built in
+                460-415 BCE, it is the best preserved temple of antiquity.
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h2>Temple of Hephaistos</h2>
+              <div class="card blue-border">
+                <div class="card-body">
+                  <h5 class="card-title">By <a href="#">Ellie Sullivan</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    Countriy <a href="#">Greece</a>
+                  </h6>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    City <a href="#">Athens</a>
+                  </h6>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    Taken on August 8, 2017
+                  </h6>
+                </div>
+              </div>
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-heart-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                    />
+                  </svg>
+                </button>
+                <button type="button" class="btn btn-light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-download"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                    />
+                    <path
+                      d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                    />
+                  </svg>
+                </button>
+                <button type="button" class="btn btn-light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-suit-club-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M11.5 12.5a3.493 3.493 0 0 1-2.684-1.254 19.92 19.92 0 0 0 1.582 2.907c.231.35-.02.847-.438.847H6.04c-.419 0-.67-.497-.438-.847a19.919 19.919 0 0 0 1.582-2.907 3.5 3.5 0 1 1-2.538-5.743 3.5 3.5 0 1 1 6.708 0A3.5 3.5 0 1 1 11.5 12.5z"
+                    />
+                  </svg>
+                </button>
+                <button type="button" class="btn btn-light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-chat-left-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <h4>Tags</h4>
+              <div class="card">
+                <div class="card-body">
+                  <span class="badge badge-primary">ancient</span>
+                  <span class="badge badge-primary">garden</span>
+                  <span class="badge badge-primary">hill</span>
+                  <span class="badge badge-primary">Temple</span>
+                  <span class="badge badge-primary">Sunshine</span>
+                  <span class="badge badge-primary">Tongle</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h4>Related Photos</h4>
+          <div class="col-md-12 padding_zero">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="card related_card">
+                  <div class="card-body">
+                    <img
+                      src="./img/related/8710320515.jpg"
+                      class="img-thumbnail"
+                      alt="..."
+                    />
+                    <p class="card-text related_photos">Elasdasf asdas sa</p>
+                    <div class="row related_buttons">
+                      <button type="button" class="btn btn-view">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-eye-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
+                            />
+                            <path
+                              d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">View</span>
+                        </div>
+                      </button>
+                      <button type="button" class="btn btn-fav">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-heart-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">Favorite</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card related_card">
+                  <div class="card-body">
+                    <img
+                      src="./img/related/8710513053.jpg"
+                      class="img-thumbnail"
+                      alt="..."
+                    />
+                    <p class="card-text related_photos">Elasdasf asdas sa</p>
+                    <div class="row related_buttons">
+                      <button type="button" class="btn btn-view">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-eye-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
+                            />
+                            <path
+                              d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">View</span>
+                        </div>
+                      </button>
+                      <button type="button" class="btn btn-fav">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-heart-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">Favorite</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card related_card">
+                  <div class="card-body">
+                    <img
+                      src="./img/related/8711623884.jpg"
+                      class="img-thumbnail"
+                      alt="..."
+                    />
+                    <p class="card-text related_photos">Elasdasf asdas sa</p>
+                    <div class="row related_buttons">
+                      <button type="button" class="btn btn-view">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-eye-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
+                            />
+                            <path
+                              d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">View</span>
+                        </div>
+                      </button>
+                      <button type="button" class="btn btn-fav">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-heart-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">Favorite</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card related_card">
+                  <div class="card-body">
+                    <img
+                      src="./img/related/9498388516.jpg"
+                      class="img-thumbnail"
+                      alt="..."
+                    />
+                    <p class="card-text related_photos">Elasdasf asdas sa</p>
+                    <div class="row related_buttons">
+                      <button type="button" class="btn btn-view">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-eye-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
+                            />
+                            <path
+                              d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">View</span>
+                        </div>
+                      </button>
+                      <button type="button" class="btn btn-fav">
+                        <div class="row">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-heart-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                            />
+                          </svg>
+                          <span class="margin_left_button">Favorite</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom_footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Share Your Travels</h4>
+            <p>
+              Another productive way to use this tool to begin a daily writing
+              routine. One way is to generate a random paragraph with the
+              intention to try to rewrite it while still keeping the original
+              meaning.
+            </p>
+            <div class="row">
+              <div class="col-md-5">
+                <h5>Headquarters</h5>
+                <p>
+                  The University of Texas at Dallas<br />800 W Campbell Rd,
+                  Richardson, TX 75080
+                </p>
+              </div>
+              <div class="col-md-5">
+                <h5>Follow Us</h5>
+                <div class="row">
+                  <div class="pink_box">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-camera-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
+                      />
+                      <path
+                        d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="dark_blue_box">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-person-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="light_blue_box">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-bookmarks-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"
+                      />
+                      <path
+                        d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="dark_red_box">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-bookmark-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="light_red_box">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-bug-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M4.978.855a.5.5 0 1 0-.956.29l.41 1.352A4.985 4.985 0 0 0 3 6h10a4.985 4.985 0 0 0-1.432-3.503l.41-1.352a.5.5 0 1 0-.956-.29l-.291.956A4.978 4.978 0 0 0 8 1a4.979 4.979 0 0 0-2.731.811l-.29-.956z"
+                      />
+                      <path
+                        d="M13 6v1H8.5v8.975A5 5 0 0 0 13 11h.5a.5.5 0 0 1 .5.5v.5a.5.5 0 1 0 1 0v-.5a1.5 1.5 0 0 0-1.5-1.5H13V9h1.5a.5.5 0 0 0 0-1H13V7h.5A1.5 1.5 0 0 0 15 5.5V5a.5.5 0 0 0-1 0v.5a.5.5 0 0 1-.5.5H13zm-5.5 9.975V7H3V6h-.5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 0-1 0v.5A1.5 1.5 0 0 0 2.5 7H3v1H1.5a.5.5 0 0 0 0 1H3v1h-.5A1.5 1.5 0 0 0 1 11.5v.5a.5.5 0 1 0 1 0v-.5a.5.5 0 0 1 .5-.5H3a5 5 0 0 0 4.5 4.975z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h4>
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-pencil-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                  />
+                </svg>
+                Recents Posts
+              </span>
+            </h4>
+            <div class="media">
+              <img src="./img/footer/6592294487.jpg" class="mr-3" alt="..." />
+              <div class="media-body">
+                <h5 class="mt-0">Media heading</h5>
+                5 minutes ago
+              </div>
+            </div>
+            <div class="space"><hr class="line" /></div>
+            <div class="media">
+              <img src="./img/footer/6114904363.jpg" class="mr-3" alt="..." />
+              <div class="media-body">
+                <h5 class="mt-0">Media heading</h5>
+                11 minutes ago
+              </div>
+            </div>
+            <div class="space"><hr class="line" /></div>
+            <div class="media">
+              <img src="./img/footer/5856697109.jpg" class="mr-3" alt="..." />
+              <div class="media-body">
+                <h5 class="mt-0">Media heading</h5>
+                22 minutes ago
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h4>
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-envelope-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"
+                  />
+                </svg>
+                Contact Us</span
+              >
+            </h4>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control message_margin"
+                placeholder="Enter your name...."
+                aria-label="name"
+                id="name"
+              />
+              <input
+                type="text"
+                class="form-control message_margin"
+                placeholder="Enter your email...."
+                aria-label="email"
+                id="email"
+              />
+              <textarea
+                class="form-control message_margin"
+                id="message"
+                rows="3"
+                placeholder="Enter your message"
+              ></textarea>
+              <button type="submit" class="btn btn_submit">Submit</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center">
+          Copyright © 2017 Creative Commons Sharesite
+        </div>
+        <div class="bottom_nav">
+          <a href="#">Home</a> / <a href="#">About</a> / <a href="#">Share</a> /
+          <a href="#">Browse</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
