@@ -36,6 +36,7 @@ window.onload = function () {
     pwd.classList.remove("error");
     confirm.classList.remove("error");
     span1.innerText = "Please Enter a valid email address: abc@def.xyz";
+    span2.innerText = "Password should have at least six characters";
     span1.style.display = "none";
     span2.style.display = "none";
     span3.style.display = "none";
@@ -53,6 +54,7 @@ window.onload = function () {
     }
     if (!pwdValidator) {
       pwd.classList.add("error");
+      span2.innerText = "Not a valid password. Please re-enter!";
       span2.style.display = "block";
     }
     if (!confirmValidator) {
