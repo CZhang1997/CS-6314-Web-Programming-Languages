@@ -60,7 +60,6 @@
   text-align: center;
 }
 .related_card {
-  /* width: 15rem; */
 }
 
 .related_buttons {
@@ -128,4 +127,23 @@
 }
 .bottom_nav a {
   color: #3b9af5;
+}
+
+.pink_btn {
+  background-color: #d222ec;
+  color: white;
+}
+
+.round_img {
+  border-radius: 50%;
+}
+.copyright_footer {
+  background-color: #0509eb;
+  color: white;
+}
+.icon_btn_group {
+  width: 100%;
+}
+.icon_btn {
+  padding: 5px 9%;
 }

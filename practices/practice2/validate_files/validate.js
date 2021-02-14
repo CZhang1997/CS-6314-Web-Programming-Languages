@@ -1,3 +1,7 @@
+// @Author: Churong Zhang
+// @Date: 2/13/2021
+// @Class: CS 6314.0W1 - Web Programming Languages - S21
+
 window.onload = function () {
   //there will be one span element for each input field
   // when the page is loaded, we create them and append them to corresponding input element
@@ -11,7 +15,7 @@ window.onload = function () {
   span3.style.display = "none"; //hide the span element
   span1.innerText = "Please Enter a valid email address: abc@def.xyz";
   span2.innerText = "Password should have at least six characters";
-  span3.innerText = "Passwords do not match";
+  span3.innerText = "Password should match";
 
   var email = document.getElementById("email");
   var pwd = document.getElementById("pwd");
@@ -37,6 +41,7 @@ window.onload = function () {
     confirm.classList.remove("error");
     span1.innerText = "Please Enter a valid email address: abc@def.xyz";
     span2.innerText = "Password should have at least six characters";
+    span3.innerText = "Password should match";
     span1.style.display = "none";
     span2.style.display = "none";
     span3.style.display = "none";
@@ -58,8 +63,10 @@ window.onload = function () {
       span2.style.display = "block";
     }
     if (!confirmValidator) {
+      span3.innerText = "Passwords do not match";
       span3.style.display = "block";
       confirm.classList.add("error");
+      pwd.classList.add("error");
     }
     if (!(emailValidator && pwdValidator && confirmValidator)) {
       e.preventDefault();
@@ -76,7 +83,7 @@ window.onload = function () {
   };
   confirm.onfocus = function () {
     reset();
-    //   span3.style.display = "block";
+    span3.style.display = "block";
   };
 
   email.onblur = function () {
@@ -85,7 +92,7 @@ window.onload = function () {
   pwd.onblur = function () {
     span2.style.display = "none";
   };
-  //   confirm.onblur = function () {
-  //     span3.style.display = "none";
-  //   };
+  confirm.onblur = function () {
+    span3.style.display = "none";
+  };
 };
