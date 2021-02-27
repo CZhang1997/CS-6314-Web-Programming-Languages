@@ -1,0 +1,54 @@
+ul {
+  list-style-type: none;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+  color: #524f49;
+}
+span {
+  width: 40px;
+  display: inline-block;
+  background-color: red;
+  text-align: center;
+  color: white;
+}
+li {
+  display: flex;
+}
+li:nth-child(odd) {
+  background-color: #e6e4df;
+}
+li:nth-child(even) {
+  background-color: #f5f1e6;
+}
+input {
+  width: 290px;
+  height: 24px;
+}
+.fa-trash {
+  margin-top: 10px;
+}
+.todos {
+  padding: 10px;
+}
+.container {
+  width: 300px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  border: 1px solid gray;
+}
+.title {
+  background-color: #4fb2e3;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.done {
+  text-decoration: line-through;
+}
