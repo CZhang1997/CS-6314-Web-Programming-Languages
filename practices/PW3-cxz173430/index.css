@@ -16,6 +16,7 @@ span {
 }
 li {
   display: flex;
+  cursor: pointer;
 }
 li:nth-child(odd) {
   background-color: #e6e4df;
@@ -24,7 +25,7 @@ li:nth-child(even) {
   background-color: #f5f1e6;
 }
 input {
-  width: 290px;
+  width: 292px;
   height: 24px;
 }
 .fa-trash {
