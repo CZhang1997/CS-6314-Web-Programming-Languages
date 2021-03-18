@@ -8,6 +8,7 @@ $(document).ready(function () {
     e.preventDefault();
     $(".dropdown-menu").toggle();
   });
+  var timeout;
   $.ajax({
     url: "js/data.json",
     dataType: "json",
@@ -18,17 +19,18 @@ $(document).ready(function () {
         const itemId = `#${id}`;
         const item = `<li><img id="${id}" alt="${title}" src="images/square/${path}" /></li>`;
         $(".gallery").append(item);
-        $(itemId).mouseenter((e) => {
+        $(itemId).mouseenter(() => {
           $(itemId).toggleClass("gray");
           const preview = `<div id="preview"><img alt="${title}" 
           src="images/medium/${path}"/><p>${title} <br/>${city}, ${country} [${taken}]</p></div>`;
           $("body").append(preview);
-          setTimeout(() => {
-            $("#preview").fadeOut(1000);
-          }, 2000);
+          timeout = setTimeout(() => {
+            $("#preview").fadeOut(500);
+          }, 1000);
         });
-        $(itemId).mouseleave((e) => {
+        $(itemId).mouseleave(() => {
           $(itemId).toggleClass("gray");
+          clearTimeout(timeout);
           $("#preview").remove();
         });
         $(itemId).mousemove((e) => {
