@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <title>CS 6314 - Web Programming Languages</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        for (var i = 1; i < 5; i++) {
+          $("#PW").append(
+            `<li><a href="practices/PW${i}-cxz173430">PW${i}</a></li>`
+          );
+        }
+
+        for (var i = 1; i < 2; i++) {
+          $("#hw").append(
+            `<li><a href="homeworks/hw${i}">Assignment${i}</a></li>`
+          );
+        }
+      });
+    </script>
+    <link rel="stylesheet" href="index.css" type="text/css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Practice works</h2>
+      <ul id="PW"></ul>
+      <h2>Assignments</h2>
+      <ul id="hw"></ul>
+    </div>
+  </body>
+</html>

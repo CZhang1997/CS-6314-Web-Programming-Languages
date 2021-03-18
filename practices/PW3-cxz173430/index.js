@@ -1,6 +1,8 @@
+//
 $(document).ready(function () {
   $("span").hide();
   $("#new").hide();
+
   $("#add").click(function () {
     $("ul").append("<li>" + $("#new").val() + "</li>");
   });
