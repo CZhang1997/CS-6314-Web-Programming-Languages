@@ -25,17 +25,14 @@ $(document).ready(function () {
           $("body").append(preview);
           setTimeout(() => {
             $("#preview").fadeOut(1000);
-          }, 1000);
+          }, 2000);
         });
         $(itemId).mouseleave((e) => {
           $(itemId).toggleClass("gray");
           $("#preview").remove();
-          // console.log("leave");
         });
         $(itemId).mousemove((e) => {
-          const { clientX, clientY, offsetX, offsetY, pageX, pageY } = e;
-          // var offset = $(itemId).offset();
-          // const { top, left } = offset;
+          const { clientX, clientY, pageX, pageY } = e;
 
           var newX = pageX + 20;
           var newY = pageY - 20;
