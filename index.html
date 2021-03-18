@@ -24,16 +24,16 @@
             console.log(data);
             const pw = data.filter((e) => e.type === "pw");
             pw.forEach((p) => {
-              const { title, number, path } = p;
+              const { title, number, path, keywords } = p;
               $("#PW").append(
-                `<li><a href="${path}">PW${number}: ${title}</a></li>`
+                `<li><a href="${path}">PW${number}: ${title} -- keywords[ ${keywords} ]</a></li>`
               );
             });
             const hw = data.filter((e) => e.type === "hw");
             hw.forEach((p) => {
-              const { title, number, path } = p;
+              const { title, number, path, keywords } = p;
               $("#hw").append(
-                `<li><a href="${path}">PW${number}: ${title}</a></li>`
+                `<li><a href="${path}">PW${number}: ${title} -- keywords[ ${keywords} ]</a></li>`
               );
             });
           },

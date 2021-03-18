@@ -3,36 +3,42 @@
     "type": "pw",
     "number": 1,
     "title": "Bootstrap UI component",
-    "path": "practices/PW1-cxz173430/"
+    "path": "practices/PW1-cxz173430/",
+    "keywords": ""
   },
   {
     "type": "pw",
     "number": 2,
     "title": "How to use Java script",
-    "path": "practices/PW2-cxz173430/"
+    "path": "practices/PW2-cxz173430/",
+    "keywords": "createElement, getElementById, appendChild, onfocus, onblur"
   },
   {
     "type": "pw",
     "number": 3,
     "title": "How to use Jquery",
-    "path": "practices/PW3-cxz173430/"
+    "path": "practices/PW3-cxz173430/",
+    "keywords": "toggle, keypress, toggleClass"
   },
   {
     "type": "pw",
     "number": 4,
     "title": "How to use Ajax to load data",
-    "path": "practices/PW4-cxz173430/"
+    "path": "practices/PW4-cxz173430/",
+    "keywords": "XML, ajax, find, each, text"
   },
   {
     "type": "hw",
     "number": 1,
     "title": "UI only",
-    "path": "homeworks/hw1/"
+    "path": "homeworks/hw1/",
+    "keywords": ""
   },
   {
     "type": "hw",
     "number": 2,
     "title": "extension of hw1, use jquery load data and show pic ",
-    "path": "homeworks/hw2/"
+    "path": "homeworks/hw2/",
+    "keywords": "ajax, mouseenter, mouseleave, forEach"
   }
 ]
