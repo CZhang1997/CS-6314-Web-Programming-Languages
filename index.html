@@ -17,17 +17,30 @@
 
     <script>
       $(document).ready(function () {
-        for (var i = 1; i < 5; i++) {
-          $("#PW").append(
-            `<li><a href="practices/PW${i}-cxz173430">PW${i}</a></li>`
-          );
-        }
-
-        for (var i = 1; i < 3; i++) {
-          $("#hw").append(
-            `<li><a href="homeworks/hw${i}">Assignment${i}</a></li>`
-          );
-        }
+        $.ajax({
+          url: "link.json",
+          dataType: "json",
+          success: function (data) {
+            console.log(data);
+            const pw = data.filter((e) => e.type === "pw");
+            pw.forEach((p) => {
+              const { title, number, path } = p;
+              $("#PW").append(
+                `<li><a href="${path}">PW${number}: ${title}</a></li>`
+              );
+            });
+            const hw = data.filter((e) => e.type === "hw");
+            hw.forEach((p) => {
+              const { title, number, path } = p;
+              $("#hw").append(
+                `<li><a href="${path}">PW${number}: ${title}</a></li>`
+              );
+            });
+          },
+          error: function () {
+            alert("error loading file");
+          },
+        });
       });
     </script>
     <link rel="stylesheet" href="index.css" type="text/css" />

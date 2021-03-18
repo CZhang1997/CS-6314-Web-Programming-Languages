@@ -1,0 +1,38 @@
+[
+  {
+    "type": "pw",
+    "number": 1,
+    "title": "Bootstrap UI component",
+    "path": "practices/PW1-cxz173430/"
+  },
+  {
+    "type": "pw",
+    "number": 2,
+    "title": "How to use Java script",
+    "path": "practices/PW2-cxz173430/"
+  },
+  {
+    "type": "pw",
+    "number": 3,
+    "title": "How to use Jquery",
+    "path": "practices/PW3-cxz173430/"
+  },
+  {
+    "type": "pw",
+    "number": 4,
+    "title": "How to use Ajax to load data",
+    "path": "practices/PW4-cxz173430/"
+  },
+  {
+    "type": "hw",
+    "number": 1,
+    "title": "UI only",
+    "path": "homeworks/hw1/"
+  },
+  {
+    "type": "hw",
+    "number": 2,
+    "title": "extension of hw1, use jquery load data and show pic ",
+    "path": "homeworks/hw2/"
+  }
+]
