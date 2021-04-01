@@ -9,14 +9,17 @@ mysql = MySQL()
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'qq5201314'
+app.config['MYSQL_DATABASE_PASSWORD'] = '123456'
 app.config['MYSQL_DATABASE_DB'] = 'TodoList'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_PORT'] = 3306
 mysql.init_app(app)
 
 # pip3 install flask-mysql
-# CREATE TABLE tbl_user( user_id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) , email VARCHAR(255),password VARCHAR(255));
+# use todolist;
+# drop table tbl_user;
+# CREATE TABLE tbl_user( userid INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30) , email VARCHAR(30),password VARCHAR(30));
+# CREATE TABLE tbl_todo( id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(30) , description VARCHAR(60), userid int(11));
 
 
 
@@ -47,6 +50,9 @@ def logout():
     session.pop('user',None)
     return redirect('/')
 
+@app.route('/showAddItem')
+def showAddItem():
+    return render_template('addItem.html')
 
 @app.route('/validateLogin', methods=['POST'])
 def validateLogin():
@@ -57,17 +63,11 @@ def validateLogin():
         con = mysql.connect()
         cursor = con.cursor()
 
-
         cursor.execute("SELECT * FROM tbl_user WHERE email = %s", (_email))
 
         data = cursor.fetchall()
-        print(data)
-        print(_password)
-        print(data[0])
-        print(data[0][3])
         if len(data) > 0:
             if str(data[0][3]) == _password:
-                print("logined")
                 session['user'] = data[0][0]
                 return redirect('/userHome')
             else:
@@ -98,12 +98,13 @@ def signUp():
         cursor = conn.cursor()
 
         cursor.execute("INSERT INTO tbl_user(name, email, password) VALUES (%s, %s, %s)", (_name, _email, _password))
-
-
         data = cursor.fetchall()
 
         if len(data) == 0:
             conn.commit()
+            cursor.execute("SELECT * FROM tbl_user WHERE email = %s", (_email))
+            data = cursor.fetchall()
+            session['user'] = data[0][0]
             return json.dumps({'message':'User created successfully !'})
         else:
             return json.dumps({'error':str(data[0])})
@@ -112,6 +113,53 @@ def signUp():
     else:
         return json.dumps({'html':'<span>Enter the required fields!</span>'})
 
+@app.route('/addItem',methods=['POST'])
+def addItem():
+    # read the posted values from the UI
+    try:
+        if session.get('user'):
+            _title = request.form['inputTitle']
+            _description = request.form['inputDescription']
+            _user = session.get('user')
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.execute("INSERT INTO tbl_todo(title, description, userid) VALUES (%s, %s, %s)", (_title, _description, _user))
+            data = cursor.fetchall()
+
+            if len(data) == 0:
+                conn.commit()
+                return redirect('/userHome')
+            else:
+                return json.dumps({'error':str(data[0])})
+
+    except Exception as e:
+        return render_template('error.html',error = str(e))
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/getTodoList', methods=['GET'])
+def getTodoList():
+    try:
+        if session.get('user'):
+            con = mysql.connect()
+            cursor = con.cursor()
+            _user = session.get('user')
+
+            cursor.execute("SELECT * FROM tbl_todo WHERE userid = %s", (_user))
+            row_headers=[x[0] for x in cursor.description]
+            json_data=[]
+            data = cursor.fetchall()
+            for result in data:
+                json_data.append(dict(zip(row_headers,result)))
+            return json.dumps(json_data) 
+
+    except Exception as e:
+        return render_template('error.html',error = str(e))
+    finally:
+        cursor.close()
+        con.close()
 
 if __name__ == "__main__":
     app.run()
