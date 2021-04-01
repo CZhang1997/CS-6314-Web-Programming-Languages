@@ -35,7 +35,7 @@ $(document).ready(function () {
         });
         $(itemId).mousemove((e) => {
           const { clientX, clientY, pageX, pageY } = e;
-
+          // console.log(e);
           var newX = pageX + 20;
           var newY = pageY - 20;
           var width = $("#preview").width();
