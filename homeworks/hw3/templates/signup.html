@@ -23,7 +23,7 @@
             success: function (response) {
               const data = JSON.parse(response);
               alert(data.message);
-              window.location.href = "http://127.0.0.1:5000/userHome";
+              window.location.href = "/userHome";
             },
             error: function (error) {
               console.log(error);

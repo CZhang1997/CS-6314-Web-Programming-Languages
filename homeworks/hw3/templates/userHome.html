@@ -12,28 +12,119 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       $(document).ready(() => {
-        $.ajax({
-          url: "/getTodoList",
-          type: "GET",
-          success: function (response) {
-            const data = JSON.parse(response);
-            data.forEach((item, index) => {
-              const { title, description } = item;
-              const i = `
-                <tr>
+        function setStatus(data) {
+          console.log(data);
+          $.ajax({
+            url: "/setStatus",
+            type: "PUT",
+            data: data,
+            success: function (response) {
+              console.log(response);
+              // alert(message);
+            },
+            error: function (err) {
+              console.log(err);
+            },
+          });
+        }
+
+        function updateItem(data) {
+          $.ajax({
+            url: "/updateItem",
+            type: "PUT",
+            data: data,
+            success: function (response) {
+              console.log(response);
+              const { message = "" } = JSON.parse(response);
+              alert(message);
+            },
+            error: function (err) {
+              console.log(err);
+            },
+          });
+        }
+
+        function deleteItem(data) {
+          const { id } = data;
+          $.ajax({
+            url: "/deleteItem",
+            type: "DELETE",
+            data: data,
+            success: function (response) {
+              console.log(response);
+              getTodoList();
+            },
+            error: function (err) {
+              console.log(err);
+            },
+          });
+        }
+
+        function getTodoList() {
+          $.ajax({
+            url: "/getTodoList",
+            type: "GET",
+            success: function (response) {
+              const data = JSON.parse(response);
+              $("#todolist").children().remove();
+              data.forEach((item, index) => {
+                const { title, description, isComplete, id } = item;
+                const checked = isComplete ? `checked="checked"` : "";
+                const i = `
+                <tr id="itemRow${id}">
                   <th scope="row">${index + 1}</th>
-                  <td>${title}</td>
-                  <td>${description}</td>
-                  <td> <input type="checkbox" class="custom-control-input"></td>
+                  <td>
+                    <input
+                      type="text"
+                      name="inputTitle"
+                      id="inputTitle${id}"
+                      value="${title}"
+                    /></td>
+                  <td>
+                    <input
+                      type="text"
+                      name="inputDescription"
+                      id="inputDescription${id}"
+                      value="${description}"
+                    /></td>
+                  <td> <input type="checkbox" id="checkboxIndex${id}" ${checked}>
+                  </td>
+                  <td> 
+                    <button type="button" class="btn btn-primary" id="save${id}">Save</button>
+                  </td>
+                  <td> 
+                    <button type="button" class="btn btn-danger" id="deleteId${id}">Delete </button>
+                  </td>
                 </tr>
               `;
-              $("#todolist").append(i);
-            });
-          },
-          error: function (error) {
-            console.log(error);
-          },
-        });
+                $("#todolist").append(i);
+                $(`#checkboxIndex${id}`).change((e) => {
+                  const data = {
+                    id,
+                    isComplete: $(`#checkboxIndex${id}`).is(":checked") ? 1 : 0,
+                  };
+                  setStatus(data);
+                });
+
+                $(`#deleteId${id}`).click(() => {
+                  const data = { id };
+                  deleteItem(data);
+                });
+                $(`#save${id}`).click(() => {
+                  const title = $(`#inputTitle${id}`).val();
+                  const description = $(`#inputDescription${id}`).val();
+                  const data = { id, title, description };
+                  updateItem(data);
+                });
+              });
+            },
+            error: function (error) {
+              console.log(error);
+            },
+          });
+        }
+        // fetch data for the first time
+        getTodoList();
       });
     </script>
   </head>
@@ -44,7 +135,7 @@
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/userHome">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/showAddItem">Add Item</a>
@@ -60,7 +151,7 @@
       </div>
 
       <div class="jumbotron">
-        <h1>Welcome Home !!</h1>
+        <h1>Welcome Home, {{username}} !!</h1>
       </div>
       <table class="table">
         <thead>
@@ -68,7 +159,9 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Done</th>
+            <th scope="col">Status</th>
+            <th scope="col">Modify</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody id="todolist"></tbody>

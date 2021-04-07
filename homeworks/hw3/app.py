@@ -9,7 +9,7 @@ mysql = MySQL()
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'qq5201314'
+app.config['MYSQL_DATABASE_PASSWORD'] = '123456'
 app.config['MYSQL_DATABASE_DB'] = 'TodoList'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_PORT'] = 3306
@@ -19,9 +19,7 @@ mysql.init_app(app)
 # use todolist;
 # drop table tbl_user;
 # CREATE TABLE tbl_user( userid INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30) , email VARCHAR(30),password VARCHAR(30));
-# CREATE TABLE tbl_todo( id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(30) , description VARCHAR(60), userid int(11));
-
-
+# CREATE TABLE tbl_todo( id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(30) , description VARCHAR(60), userid int(11), isComplete boolean);
 
 app.secret_key = 'secret key can be anything!'
 
@@ -41,7 +39,7 @@ def showSignin():
 @app.route('/userHome')
 def userHome():
     if session.get('user'):
-        return render_template('userHome.html')
+        return render_template('userHome.html', username = session.get('name'))
     else:
         return render_template('error.html',error = 'Unauthorized Access')
 
@@ -69,6 +67,7 @@ def validateLogin():
         if len(data) > 0:
             if str(data[0][3]) == _password:
                 session['user'] = data[0][0]
+                session['name'] = data[0][1]
                 return redirect('/userHome')
             else:
                 return render_template('error.html',error = 'Wrong Email address or Password.')
@@ -105,11 +104,11 @@ def signUp():
             cursor.execute("SELECT * FROM tbl_user WHERE email = %s", (_email))
             data = cursor.fetchall()
             session['user'] = data[0][0]
+            session['name'] = data[0][1]
             return json.dumps({'message':'User created successfully !'})
         else:
             return json.dumps({'error':str(data[0])})
-
-
+            
     else:
         return json.dumps({'html':'<span>Enter the required fields!</span>'})
 
@@ -124,7 +123,7 @@ def addItem():
 
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.execute("INSERT INTO tbl_todo(title, description, userid) VALUES (%s, %s, %s)", (_title, _description, _user))
+            cursor.execute("INSERT INTO tbl_todo(title, description, userid, isComplete) VALUES (%s, %s, %s, false)", (_title, _description, _user))
             data = cursor.fetchall()
 
             if len(data) == 0:
@@ -132,6 +131,8 @@ def addItem():
                 return redirect('/userHome')
             else:
                 return json.dumps({'error':str(data[0])})
+        else:
+            return json.dumps({"code":404 , "message":"please login first"})
 
     except Exception as e:
         return render_template('error.html',error = str(e))
@@ -153,8 +154,81 @@ def getTodoList():
             data = cursor.fetchall()
             for result in data:
                 json_data.append(dict(zip(row_headers,result)))
-            return json.dumps(json_data) 
+            return json.dumps(json_data)
+        else:
+            return json.dumps({"code":404 , "message":"please login first"})
+    except Exception as e:
+        return render_template('error.html',error = str(e))
+    finally:
+        cursor.close()
+        con.close()
 
+@app.route('/setStatus', methods=['PUT'])
+def setStatus():
+    try:
+        if session.get('user'):
+            con = mysql.connect()
+            cursor = con.cursor()
+            _userid = session.get('user')
+            _id = request.form['id']
+            _isComplete = request.form['isComplete']
+            cursor.execute("UPDATE tbl_todo SET isComplete = %s WHERE id = %s and userid =  %s", (_isComplete, _id, _userid))
+            con.commit()
+            cursor.execute("Select * from tbl_todo WHERE id = %s", (_id))
+            row_headers=[x[0] for x in cursor.description]
+            json_data=[]
+            data = cursor.fetchall()
+            for result in data:
+                json_data.append(dict(zip(row_headers,result)))
+            return json.dumps({"message":"Save Successful", "data":json_data}) 
+        else:
+            return json.dumps({"code":404 , "message":"please login first"})
+    except Exception as e:
+        return render_template('error.html',error = str(e))
+    finally:
+        cursor.close()
+        con.close()
+
+@app.route('/updateItem', methods=['PUT'])
+def updateItem():
+    try:
+        if session.get('user'):
+            con = mysql.connect()
+            cursor = con.cursor()
+            _id = request.form['id']
+            _userid = session.get('user')
+            _title = request.form['title']
+            _description = request.form['description']
+
+            cursor.execute("UPDATE tbl_todo SET title = %s, description = %s WHERE id = %s and userid =  %s", (_title, _description, _id, _userid))
+            con.commit()
+            cursor.execute("Select * from tbl_todo WHERE id = %s", (_id))
+            row_headers=[x[0] for x in cursor.description]
+            json_data=[]
+            data = cursor.fetchall()
+            for result in data:
+                json_data.append(dict(zip(row_headers,result)))
+            return json.dumps({"message":"Save Successful", "data":json_data}) 
+        else:
+            return json.dumps({"code":404 , "message":"please login first"})
+    except Exception as e:
+        return render_template('error.html',error = str(e))
+    finally:
+        cursor.close()
+        con.close()
+
+@app.route('/deleteItem', methods=['DELETE'])
+def deleteItem():
+    try:
+        if session.get('user'):
+            con = mysql.connect()
+            cursor = con.cursor()
+            _id = request.form['id']
+            cursor.execute("DELETE FROM tbl_todo WHERE id = %s", ( _id))
+            con.commit()
+            return json.dumps({"message":"Delete completed"})
+        else:
+            return json.dumps({"code":404 , "message":"please login first"}) 
     except Exception as e:
         return render_template('error.html',error = str(e))
     finally:
