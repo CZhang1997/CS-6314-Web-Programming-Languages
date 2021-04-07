@@ -28,6 +28,13 @@
     "keywords": "XML, ajax, find, each, text"
   },
   {
+    "type": "pw",
+    "number": 5,
+    "title": "Using python flask to host a web app",
+    "path": "",
+    "keywords": "python flask, mysql"
+  },
+  {
     "type": "hw",
     "number": 1,
     "title": "UI only",
@@ -40,5 +47,12 @@
     "title": "extension of hw1, use jquery load data and show pic ",
     "path": "homeworks/hw2/",
     "keywords": "ajax, mouseenter, mouseleave, forEach"
+  },
+  {
+    "type": "hw",
+    "number": 3,
+    "title": "Using python flask to host a web app todolist, login, etc",
+    "path": "",
+    "keywords": "python flask, mysql, put, post, get, delete"
   }
 ]

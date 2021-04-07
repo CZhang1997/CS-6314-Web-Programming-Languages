@@ -25,16 +25,17 @@
             const pw = data.filter((e) => e.type === "pw");
             pw.forEach((p) => {
               const { title, number, path, keywords } = p;
-              $("#PW").append(
-                `<li><a href="${path}">PW${number}: ${title} -- keywords[ ${keywords} ]</a></li>`
-              );
+
+              const item = `PW${number}: ${title} -- keywords[ ${keywords} ]`;
+              const liItem = path ? `<a href="${path}">${item}</a>` : item;
+              $("#PW").append(`<li>${liItem}</li>`);
             });
             const hw = data.filter((e) => e.type === "hw");
             hw.forEach((p) => {
               const { title, number, path, keywords } = p;
-              $("#hw").append(
-                `<li><a href="${path}">PW${number}: ${title} -- keywords[ ${keywords} ]</a></li>`
-              );
+              const item = `HW${number}: ${title} -- keywords[ ${keywords} ]`;
+              const liItem = path ? `<a href="${path}">${item}</a>` : item;
+              $("#hw").append(`<li>${liItem}</li>`);
             });
           },
           error: function () {
