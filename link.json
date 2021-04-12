@@ -35,6 +35,13 @@
     "keywords": "python flask, mysql"
   },
   {
+    "type": "pw",
+    "number": 6,
+    "title": "google map search for library",
+    "path": "practices/PW6-cxz173430/",
+    "keywords": "google map api"
+  },
+  {
     "type": "hw",
     "number": 1,
     "title": "UI only",

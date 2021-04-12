@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Search Nearby</title>
-    
+    <title>Search library</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHD5Azdp9yEur5KnVYJAUNf8ZAw6m40F4&callback=initialize&libraries=places"
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <!-- AIzaSyDHD5Azdp9yEur5KnVYJAUNf8ZAw6m40F4 handson -->
+    <!-- AIzaSyAcFbrOzzE6kMLWA-eYbA3Ov50WxFZzAPQ -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcFbrOzzE6kMLWA-eYbA3Ov50WxFZzAPQ&callback=initialize&libraries=places"
       defer
     ></script>
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 90%;
       }
 
       /* Optional: Makes the sample page fill the window. */
@@ -23,49 +36,83 @@
       }
     </style>
     <script>
+      var map;
+      var service;
+      var geocoder;
 
+      function nearbySearch(request) {
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+      }
+      function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var utd = new google.maps.LatLng(32.985771, -96.750003);
 
-    var map;
-    var service;
-
-    function initialize() {
-      var utd = new google.maps.LatLng(32.985771, -96.750003 );
-
-      map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById("map"), {
           center: utd,
-          zoom: 18
+          zoom: 14,
         });
+      }
 
-      var request = {
-        location: utd,
-        radius: '500',
-        type: ['restaurant']
-      };
+      function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            const marker = new google.maps.Marker({
+              map,
+              title: results[i].name,
+              position: results[i].geometry.location,
+            });
 
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(request, callback);
-    }
-
-    function callback(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          // createMarker(results[i]);
-
-          new google.maps.Marker({
-            map,
-            title: results[i].name,
-            position: results[i].geometry.location,
-          });
-
-
+            marker.addListener("click", () => {
+              var infowindow = new google.maps.InfoWindow({
+                content: marker.title,
+              });
+              infowindow.open(map, marker);
+            });
+          }
         }
       }
-    }
 
-
+      $(document).ready(() => {
+        function searchCallback(results, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var request = {
+              location: results[0].geometry.location,
+              radius: "1500",
+              type: ["library"],
+            };
+            nearbySearch(request);
+          } else {
+            alert(
+              "Geocode was not successful for the following reason: " + status
+            );
+          }
+        }
+        $("#search_form").submit(function (e) {
+          e.preventDefault();
+          const query = $("#search_value").val();
+          var request = {
+            address: query,
+          };
+          geocoder.geocode(request, searchCallback);
+        });
+      });
     </script>
   </head>
   <body>
-    <div id="map"></div>
+    <form id="search_form" class="form-inline" style="justify-content: center">
+      <input
+        class="form-control"
+        type="search"
+        id="search_value"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" id="search_button" type="submit">
+        Search
+      </button>
+    </form>
+    <div class="container" id="map"></div>
   </body>
 </html>
