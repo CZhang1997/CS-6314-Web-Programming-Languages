@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Favorite Places</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <!-- AIzaSyDHD5Azdp9yEur5KnVYJAUNf8ZAw6m40F4 handson -->
+    <!-- AIzaSyAcFbrOzzE6kMLWA-eYbA3Ov50WxFZzAPQ -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcFbrOzzE6kMLWA-eYbA3Ov50WxFZzAPQ&callback=initialize&libraries=places"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 90%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      var map;
+      var service;
+      var geocoder;
+
+      function nearbySearch(request) {
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+      }
+      function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var utd = new google.maps.LatLng(32.985771, -96.750003);
+
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: utd,
+          zoom: 14,
+        });
+      }
+
+      function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            const marker = new google.maps.Marker({
+              map,
+              title: results[i].name,
+              position: results[i].geometry.location,
+            });
+
+            marker.addListener("click", () => {
+              var infowindow = new google.maps.InfoWindow({
+                content: marker.title,
+              });
+              infowindow.open(map, marker);
+            });
+          }
+        }
+      }
+
+      $(document).ready(() => {
+        function searchCallback(results, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            console.log(results);
+            const { formatted_address: address, types } = results[0];
+            const payload = {
+              name: $("#search_value").val(),
+              address,
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng(),
+              type: "restaurant",
+            };
+            const { name, lat, lng, type } = payload;
+            console.log(payload);
+            console.log(
+              `INSERT INTO restaurants(name, address, lat, lng, type) VALUES ("${name}", "${address}", ${lat},${lng}, "${type}")`
+            );
+          } else {
+            alert(
+              "Geocode was not successful for the following reason: " + status
+            );
+          }
+        }
+        $("#search_form").submit(function (e) {
+          e.preventDefault();
+          const query = $("#search_value").val();
+          var request = {
+            address: query,
+          };
+          geocoder.geocode(request, searchCallback);
+        });
+        function getFavoritePlaces() {
+          $.ajax({
+            url: "/getFavoritePlaces",
+            type: "GET",
+            success: function (response) {
+              const data = JSON.parse(response);
+              console.log(data);
+              if (data.length > 0) {
+                const { lat, lng } = data[0];
+                map.setCenter({ lat, lng });
+              }
+              data.forEach((item, index) => {
+                const { name, lat, lng, type, address } = item;
+                const marker = new google.maps.Marker({
+                  map,
+                  title: name,
+                  position: { lat, lng },
+                });
+
+                marker.addListener("click", () => {
+                  var infowindow = new google.maps.InfoWindow({
+                    content: `${marker.title} -> ${address}`,
+                  });
+                  infowindow.open(map, marker);
+                });
+              });
+            },
+            error: function (error) {
+              console.log(error);
+            },
+          });
+        }
+        getFavoritePlaces();
+      });
+    </script>
+  </head>
+  <body>
+    <form id="search_form" class="form-inline" style="justify-content: center">
+      <input
+        class="form-control"
+        type="search"
+        id="search_value"
+        placeholder=" Search Places"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" id="search_button" type="submit">
+        Generate mysql on console
+      </button>
+    </form>
+    <div class="container" id="map"></div>
+  </body>
+</html>
